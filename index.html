@@ -3,7 +3,57 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Digital Benchtop — Research Websites for Scientists</title>
+<title>Digital Benchtop | Professional Lab Websites for Researchers & PIs</title>
+<meta name="description" content="Custom research lab websites built by an NIH-funded scientist. Launching in 2–4 weeks from $1,000. Serving principal investigators, postdocs, and faculty at R1 universities nationwide.">
+<meta name="keywords" content="lab website, research lab website, PI website, academic website, faculty website, principal investigator website, university lab website">
+<meta name="author" content="Digital Benchtop">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://digitalbenchtop.com/">
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://digitalbenchtop.com/">
+<meta property="og:title" content="Digital Benchtop | Professional Lab Websites for Researchers & PIs">
+<meta property="og:description" content="Custom research lab websites built by an NIH-funded scientist. Launch in 2–4 weeks from $1,000. No tech skills needed.">
+<meta property="og:image" content="https://digitalbenchtop.com/og-image.png">
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Digital Benchtop | Professional Lab Websites for Researchers & PIs">
+<meta name="twitter:description" content="Custom research lab websites built by an NIH-funded scientist. Launch in 2–4 weeks from $1,000.">
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Digital Benchtop",
+  "description": "Custom professional websites for research labs, principal investigators, and academic faculty. Built by a scientist who understands grant cycles, publications, and the tenure clock.",
+  "url": "https://digitalbenchtop.com",
+  "email": "hello@digitalbenchmark.com",
+  "serviceType": "Web Design & Development",
+  "areaServed": "United States",
+  "audience": {
+    "@type": "Audience",
+    "audienceType": "Academic Researchers, Principal Investigators, Postdoctoral Fellows, Faculty"
+  },
+  "offers": [
+    {
+      "@type": "Offer",
+      "name": "Launch — One-Time Setup",
+      "price": "1000",
+      "priceCurrency": "USD"
+    },
+    {
+      "@type": "Offer",
+      "name": "Maintain — Monthly Updates",
+      "price": "20",
+      "priceCurrency": "USD",
+      "priceSpecification": {
+        "@type": "UnitPriceSpecification",
+        "billingDuration": "P1M"
+      }
+    }
+  ]
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -41,9 +91,12 @@ body{
   cursor:none;
 }
 
+/* CUSTOM SELECTION */
+::selection{background:var(--accent);color:var(--bg)}
+::-moz-selection{background:var(--accent);color:var(--bg)}
+
 a{color:inherit;text-decoration:none}
 button{cursor:none;font-family:var(--font-body);border:none;background:none}
-input{font-family:var(--font-body);cursor:none}
 
 ::-webkit-scrollbar{width:3px}
 ::-webkit-scrollbar-track{background:var(--bg)}
@@ -105,8 +158,10 @@ body.c-click .cursor{width:7px;height:7px}
   font-family:var(--font-display);font-size:1.2rem;font-weight:600;
   letter-spacing:.01em;flex-shrink:0;
 }
-.logo-hex{
-  width:28px;height:28px;color:var(--accent);flex-shrink:0;
+.logo-img{
+  height:32px;width:auto;flex-shrink:0;
+  filter:brightness(0) invert(1);
+  opacity:.92;
 }
 .logo em{font-style:normal;color:var(--accent)}
 .nav-links{display:flex;gap:36px;margin-left:auto}
@@ -122,10 +177,11 @@ body.c-click .cursor{width:7px;height:7px}
 .nav-links a:hover{color:var(--text-1)}
 .nav-links a:hover::after{width:100%}
 .nav-cta{
+  display:inline-flex;align-items:center;
   padding:8px 22px;border:1px solid var(--accent-border);
-  color:var(--accent);font-size:.85rem;font-weight:500;
-  border-radius:4px;transition:background .25s,color .25s,box-shadow .25s;
-  flex-shrink:0;position:relative;overflow:hidden;
+  color:var(--accent);font-size:.85rem;font-weight:500;font-family:var(--font-body);
+  border-radius:10px;transition:background .25s,color .25s,box-shadow .25s;
+  flex-shrink:0;position:relative;overflow:hidden;cursor:none;
 }
 .nav-cta::before{
   content:'';position:absolute;inset:0;
@@ -196,7 +252,15 @@ body.c-click .cursor{width:7px;height:7px}
   font-weight:500;line-height:1.04;
   letter-spacing:-.015em;margin-bottom:28px;
 }
-.h1-line{display:block;overflow:hidden}
+/* Fix ascender + descender clipping on italic display font */
+.h1-line{
+  display:block;
+  overflow:hidden;
+  padding-top:0.22em;
+  margin-top:-0.18em;
+  padding-bottom:0.22em;
+  margin-bottom:-0.2em;
+}
 .h1-inner{
   display:block;
   animation:lineUp 1s var(--ease-spring) both;
@@ -217,28 +281,18 @@ body.c-click .cursor{width:7px;height:7px}
   transition:opacity .28s,transform .28s;
 }
 
-.hero-form{
-  display:flex;gap:12px;max-width:480px;
+/* Hero CTA row */
+.hero-cta-row{
+  display:flex;align-items:center;gap:24px;flex-wrap:wrap;
   animation:fadeUp .9s var(--ease-spring) .52s both;
-  margin-bottom:26px;
-}
-.hero-input,.cta-input{
-  flex:1;padding:14px 18px;
-  background:var(--bg-raised);border:1px solid var(--border-strong);
-  border-radius:6px;color:var(--text-1);font-size:.9rem;
-  outline:none;transition:border-color .25s,box-shadow .25s;
-}
-.hero-input::placeholder,.cta-input::placeholder{color:var(--text-3)}
-.hero-input:focus,.cta-input:focus{
-  border-color:var(--accent-border);
-  box-shadow:0 0 0 3px var(--accent-glow);
+  margin-bottom:28px;
 }
 .hero-btn{
-  display:flex;align-items:center;gap:8px;
-  padding:14px 26px;background:var(--accent);color:var(--bg);
-  font-size:.88rem;font-weight:600;border-radius:6px;
-  white-space:nowrap;transition:box-shadow .3s;
-  position:relative;overflow:hidden;
+  display:inline-flex;align-items:center;gap:9px;
+  padding:15px 30px;background:var(--accent);color:var(--bg);
+  font-size:.92rem;font-weight:600;border-radius:12px;font-family:var(--font-body);
+  white-space:nowrap;transition:box-shadow .3s,transform .15s;
+  position:relative;overflow:hidden;cursor:none;
 }
 .hero-btn::before{
   content:'';position:absolute;inset:0;
@@ -247,9 +301,15 @@ body.c-click .cursor{width:7px;height:7px}
   transition:transform .4s var(--ease-spring);
 }
 .hero-btn:hover::before{transform:translateX(101%)}
-.hero-btn:hover{box-shadow:0 8px 28px var(--accent-glow),0 0 0 1px var(--accent)}
+.hero-btn:hover{box-shadow:0 10px 32px var(--accent-glow),0 0 0 1px var(--accent)}
 .hero-btn span{position:relative;z-index:1}
 .hero-btn svg{position:relative;z-index:1}
+
+.hero-no-commitment{
+  font-size:.78rem;color:var(--text-3);
+  animation:fadeUp .9s var(--ease-spring) .58s both;
+  margin-bottom:28px;
+}
 
 .hero-proof{
   display:flex;align-items:center;gap:12px;
@@ -261,6 +321,20 @@ body.c-click .cursor{width:7px;height:7px}
   width:26px;height:26px;border-radius:50%;
   border:2px solid var(--bg);margin-right:-7px;
   background:linear-gradient(135deg,hsl(calc(var(--h)*1deg),55%,35%),hsl(calc(var(--h)*1deg + 45deg),65%,52%));
+}
+
+/* URGENCY BANNER */
+.urgency{
+  display:inline-flex;align-items:center;gap:8px;
+  margin-bottom:20px;padding:6px 14px;
+  background:rgba(255,179,71,.08);border:1px solid rgba(255,179,71,.25);
+  border-radius:100px;font-size:.75rem;color:var(--warm);
+  animation:fadeUp .9s var(--ease-spring) .05s both;
+}
+.urgency-dot{
+  width:5px;height:5px;border-radius:50%;background:var(--warm);
+  box-shadow:0 0 6px var(--warm);flex-shrink:0;
+  animation:blink 2s ease-in-out infinite;
 }
 
 .hero-scroll-hint{
@@ -372,53 +446,163 @@ body.c-click .cursor{width:7px;height:7px}
 }
 .why-card p{font-size:.875rem;color:var(--text-2);line-height:1.75;position:relative;z-index:1}
 
-/* PROCESS (Horizontal Scroll) */
-.process-outer{position:relative;height:450vh}
-.process-sticky{
-  position:sticky;top:0;height:100vh;overflow:hidden;
-  display:flex;flex-direction:column;padding:72px 0 56px;
+/* COMPARISON TABLE */
+.compare{padding:100px 40px;background:var(--bg-card);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.compare-inner{max-width:900px;margin:0 auto}
+.compare-inner .section-h2{margin-bottom:56px;text-align:center}
+.compare-inner .section-label{text-align:center;display:block}
+.compare-table{width:100%;border-collapse:separate;border-spacing:0}
+.compare-table th{
+  padding:18px 24px;font-size:.75rem;font-weight:600;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--text-2);
+  border-bottom:1px solid var(--border);
 }
-.process-hdr{padding:0 64px;margin-bottom:52px;flex-shrink:0}
-.process-track-wrap{
-  flex:1;overflow:hidden;
-  padding:0 64px;display:flex;align-items:center;
+.compare-table th:first-child{text-align:left;color:var(--text-3)}
+.compare-table th.col-us{
+  color:var(--accent);
+  background:rgba(0,229,200,.04);
+  border:1px solid var(--accent-border);
+  border-bottom:none;
+  border-radius:8px 8px 0 0;
 }
-.process-track{
-  display:flex;gap:28px;will-change:transform;
-  padding-right:64px;
+.compare-table td{
+  padding:16px 24px;font-size:.86rem;color:var(--text-2);
+  border-bottom:1px solid var(--border);text-align:center;
 }
-.p-step{
-  flex-shrink:0;width:320px;padding:44px;
-  background:var(--bg-card);border:1px solid var(--border);
-  border-radius:12px;
-  transition:border-color .4s,background .4s,transform .5s var(--ease-spring);
+.compare-table td:first-child{text-align:left;color:var(--text-1)}
+.compare-table td.col-us{
+  background:rgba(0,229,200,.04);
+  border-left:1px solid var(--accent-border);
+  border-right:1px solid var(--accent-border);
 }
-.p-step.active{
-  border-color:var(--accent-border);
-  background:var(--bg-raised);
-  transform:translateY(-8px);
+.compare-table tr:last-child td.col-us{
+  border-bottom:1px solid var(--accent-border);
+  border-radius:0 0 8px 8px;
 }
-.step-n{
-  font-family:var(--font-display);font-size:5rem;
-  font-weight:300;color:var(--text-3);line-height:1;
-  margin-bottom:28px;
-  transition:color .4s;
+.compare-table tr:last-child td{border-bottom:none}
+.ck{color:var(--accent);font-size:1.1rem}
+.xk{color:var(--text-3);font-size:1.1rem}
+.pk{color:var(--warm);font-size:.82rem}
+
+/* PROCESS — interactive steps */
+.process{padding:128px 40px}
+.process-inner{max-width:1100px;margin:0 auto}
+.proc-hdr{margin-bottom:56px;max-width:520px}
+
+.proc-layout{
+  display:grid;
+  grid-template-columns:260px 1fr;
+  border:1px solid var(--border);
+  border-radius:16px;
+  overflow:hidden;
+  background:var(--bg-card);
 }
-.p-step.active .step-n{color:var(--accent)}
-.p-step h3{
-  font-family:var(--font-display);font-size:1.75rem;
-  font-weight:600;margin-bottom:14px;
+
+.proc-nav{
+  border-right:1px solid var(--border);
+  display:flex;flex-direction:column;
 }
-.p-step p{font-size:.875rem;color:var(--text-2);line-height:1.75}
-.process-bar-wrap{
-  flex-shrink:0;margin:36px 64px 0;
-  height:2px;background:var(--border);border-radius:2px;overflow:hidden;
+
+.proc-tab{
+  padding:22px 24px;
+  text-align:left;
+  border-bottom:1px solid var(--border);
+  position:relative;overflow:hidden;
+  cursor:none;background:none;
 }
-.process-bar{
+.proc-tab:last-child{border-bottom:none}
+
+.proc-tab::after{
+  content:'';position:absolute;inset:0;
+  background:var(--accent-glow);opacity:0;
+  transition:opacity .3s;pointer-events:none;
+}
+.proc-tab:hover::after{opacity:.55}
+.proc-tab.active::after{opacity:1}
+
+.proc-tab::before{
+  content:'';
+  position:absolute;left:0;top:0;bottom:0;width:2px;
+  background:var(--accent);
+  transform:scaleY(0);transform-origin:top;
+  transition:transform .4s var(--ease-spring);z-index:1;
+}
+.proc-tab.active::before{transform:scaleY(1)}
+
+.proc-tab-inner{
+  position:relative;z-index:1;
+  display:flex;align-items:center;gap:13px;
+}
+.proc-num{
+  font-family:var(--font-display);
+  font-size:1.35rem;font-weight:600;
+  color:var(--text-3);line-height:1;
+  transition:color .3s;flex-shrink:0;min-width:2ch;
+}
+.proc-tab.active .proc-num{color:var(--accent)}
+.proc-tab-text{display:flex;flex-direction:column;gap:2px}
+.proc-step-lbl{
+  font-size:.6rem;font-weight:500;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--text-3);
+  transition:color .3s;
+}
+.proc-tab.active .proc-step-lbl{color:var(--accent);opacity:.6}
+.proc-tab-title{
+  font-size:.84rem;font-weight:500;color:var(--text-2);
+  transition:color .3s;
+}
+.proc-tab.active .proc-tab-title{color:var(--text-1)}
+
+.proc-tab-prog{
+  position:absolute;bottom:0;left:0;right:0;
+  height:1px;background:transparent;overflow:hidden;z-index:2;
+}
+.proc-tab-prog-fill{
   height:100%;background:var(--accent);width:0%;
-  border-radius:2px;transition:width .08s linear;
-  box-shadow:0 0 8px var(--accent);
+  box-shadow:0 0 6px var(--accent);
 }
+
+.proc-content{
+  position:relative;overflow:hidden;min-height:340px;
+}
+
+.proc-panel{
+  position:absolute;inset:0;
+  padding:48px 52px;
+  display:flex;flex-direction:column;justify-content:center;
+  opacity:0;transform:translateY(16px);
+  transition:opacity .48s var(--ease-spring),transform .48s var(--ease-spring);
+  pointer-events:none;
+}
+.proc-panel.active{
+  opacity:1;transform:translateY(0);pointer-events:auto;
+}
+.proc-panel.exit{
+  opacity:0;transform:translateY(-16px);
+}
+
+.proc-ghost{
+  position:absolute;
+  font-family:var(--font-display);
+  font-size:clamp(6rem,13vw,12rem);
+  font-weight:700;color:var(--accent);opacity:.048;
+  line-height:1;right:28px;bottom:-12px;
+  pointer-events:none;user-select:none;
+}
+
+.step-tag{
+  font-size:.7rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:20px;
+  display:flex;align-items:center;gap:10px;
+}
+.step-tag::before{
+  content:'';width:28px;height:1px;background:var(--accent);flex-shrink:0;
+}
+.proc-panel h3{
+  font-family:var(--font-display);font-size:clamp(1.9rem,3.2vw,2.7rem);
+  font-weight:600;line-height:1.1;margin-bottom:16px;
+}
+.proc-panel p{font-size:.93rem;color:var(--text-2);line-height:1.85;max-width:370px}
 
 /* TEMPLATES */
 .templates{padding:128px 40px}
@@ -514,7 +698,7 @@ body.c-click .cursor{width:7px;height:7px}
 .tog-track{
   width:42px;height:22px;background:var(--bg-raised);
   border:1px solid var(--border-strong);border-radius:11px;
-  position:relative;transition:border-color .3s;
+  position:relative;transition:border-color .3s;cursor:none;
 }
 .tog-track.on{border-color:var(--accent-border)}
 .tog-thumb{
@@ -566,15 +750,21 @@ body.c-click .cursor{width:7px;height:7px}
 .chk{width:15px;height:15px;color:var(--accent);flex-shrink:0;margin-top:2px}
 .p-btn{
   display:block;width:100%;padding:14px;text-align:center;
-  border-radius:6px;font-size:.88rem;font-weight:600;
-  transition:all .3s;
+  border-radius:12px;font-size:.88rem;font-weight:600;
+  transition:all .3s;font-family:var(--font-body);
 }
 .p-btn-outline{border:1px solid var(--border-strong);color:var(--text-1)}
 .p-btn-outline:hover{border-color:var(--accent-border);background:var(--accent-glow);color:var(--accent)}
 .p-btn-solid{background:var(--accent);color:var(--bg)}
 .p-btn-solid:hover{box-shadow:0 8px 28px var(--accent-glow)}
+.p-guarantee{
+  margin-top:16px;text-align:center;
+  font-size:.75rem;color:var(--text-3);
+  display:flex;align-items:center;justify-content:center;gap:6px;
+}
+.p-guarantee svg{color:var(--accent);flex-shrink:0}
 
-/* TESTIMONIAL */
+/* TESTIMONIALS */
 .testi{
   padding:128px 40px;background:var(--bg-card);
   border-top:1px solid var(--border);border-bottom:1px solid var(--border);
@@ -587,22 +777,63 @@ body.c-click .cursor{width:7px;height:7px}
   font-weight:700;color:var(--accent);opacity:.04;
   line-height:1;pointer-events:none;
 }
-.testi-inner{max-width:780px;margin:0 auto;position:relative;z-index:1}
+.testi-inner{max-width:900px;margin:0 auto;position:relative;z-index:1}
+.testi-grid{
+  display:grid;grid-template-columns:1fr 1px 1fr;gap:0 52px;
+  align-items:start;
+}
+.testi-item{}
 .testi-quote{
   font-family:var(--font-display);
-  font-size:clamp(1.6rem,3.5vw,2.35rem);
-  font-weight:400;line-height:1.45;font-style:italic;
-  margin-bottom:48px;
+  font-size:clamp(1.35rem,2.6vw,1.85rem);
+  font-weight:400;line-height:1.5;font-style:italic;
+  margin-bottom:36px;color:var(--text-1);
 }
 .testi-author{display:flex;align-items:center;gap:16px}
 .author-av{
   width:46px;height:46px;border-radius:50%;flex-shrink:0;
-  background:linear-gradient(135deg,#0F2A40 0%,var(--accent) 100%);
   border:2px solid var(--accent-border);
 }
+.author-av-1{background:linear-gradient(135deg,#0F2A40 0%,var(--accent) 100%)}
+.author-av-2{background:linear-gradient(135deg,#1A0F35 0%,#7C4DFF 100%)}
 .author-name{font-weight:600;font-size:.9rem;margin-bottom:2px}
 .author-title{font-size:.78rem;color:var(--text-2)}
 .stars{color:var(--warm);font-size:.75rem;margin-top:8px;letter-spacing:2px}
+.testi-divider{
+  width:1px;background:var(--border);
+}
+
+/* FAQ */
+.faq{padding:128px 40px}
+.faq-inner{max-width:780px;margin:0 auto}
+.faq-inner .section-label{display:block;margin-bottom:14px}
+.faq-inner .section-h2{margin-bottom:56px}
+.faq-list{list-style:none}
+.faq-item{
+  border-bottom:1px solid var(--border);
+  overflow:hidden;
+}
+.faq-item:first-child{border-top:1px solid var(--border)}
+.faq-q{
+  display:flex;align-items:center;justify-content:space-between;
+  width:100%;padding:24px 0;
+  font-size:1rem;font-weight:500;color:var(--text-1);
+  background:none;border:none;cursor:none;text-align:left;
+  font-family:var(--font-body);gap:16px;
+  transition:color .25s;
+}
+.faq-q:hover{color:var(--accent)}
+.faq-q svg{
+  flex-shrink:0;color:var(--accent);
+  transition:transform .4s var(--ease-spring);
+}
+.faq-item.open .faq-q svg{transform:rotate(45deg)}
+.faq-a{
+  max-height:0;overflow:hidden;
+  transition:max-height .5s var(--ease-spring),padding .4s;
+  font-size:.9rem;color:var(--text-2);line-height:1.8;
+}
+.faq-a-inner{padding-bottom:24px}
 
 /* CTA */
 .cta-sec{
@@ -617,23 +848,32 @@ body.c-click .cursor{width:7px;height:7px}
 }
 .cta-inner{max-width:580px;margin:0 auto;position:relative;z-index:1}
 .cta-inner .section-h2{margin-bottom:20px}
-.cta-sub{font-size:.95rem;color:var(--text-2);margin-bottom:48px;line-height:1.75}
-.cta-form{display:flex;gap:12px;justify-content:center;max-width:420px;margin:0 auto}
-.cta-btn{
-  padding:14px 26px;background:var(--accent);color:var(--bg);
-  font-size:.88rem;font-weight:600;border-radius:6px;
-  white-space:nowrap;transition:box-shadow .3s;
+.cta-sub{font-size:.95rem;color:var(--text-2);margin-bottom:20px;line-height:1.75}
+.cta-scarcity{
+  display:inline-flex;align-items:center;gap:7px;
+  font-size:.78rem;color:var(--warm);margin-bottom:40px;
+  padding:5px 14px;background:rgba(255,179,71,.07);
+  border:1px solid rgba(255,179,71,.2);border-radius:100px;
 }
-.cta-btn:hover{box-shadow:0 8px 28px var(--accent-glow)}
-.cta-ok{
-  display:none;align-items:center;justify-content:center;gap:12px;
-  padding:20px;background:var(--accent-glow);
-  border:1px solid var(--accent-border);border-radius:8px;
-  color:var(--accent);font-weight:500;
-  animation:scaleIn .5s var(--ease-spring) both;
+.cta-mailto{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:17px 36px;background:var(--accent);color:var(--bg);
+  font-size:.95rem;font-weight:600;border-radius:12px;font-family:var(--font-body);
+  transition:box-shadow .3s;position:relative;overflow:hidden;cursor:none;
+  margin-bottom:20px;
 }
-@keyframes scaleIn{from{opacity:0;transform:scale(.93)}to{opacity:1;transform:scale(1)}}
-.cta-ok.show{display:flex}
+.cta-mailto::before{
+  content:'';position:absolute;inset:0;
+  background:rgba(255,255,255,.16);
+  transform:translateX(-101%);
+  transition:transform .4s var(--ease-spring);
+}
+.cta-mailto:hover::before{transform:translateX(101%)}
+.cta-mailto:hover{box-shadow:0 12px 36px var(--accent-glow),0 0 0 1px var(--accent)}
+.cta-mailto span{position:relative;z-index:1}
+.cta-mailto svg{position:relative;z-index:1}
+.cta-fine{font-size:.76rem;color:var(--text-3)}
+.cta-fine a{color:var(--accent);border-bottom:1px solid var(--accent-border)}
 
 /* FOOTER */
 footer{padding:48px 40px;border-top:1px solid var(--border)}
@@ -657,6 +897,20 @@ footer{padding:48px 40px;border-top:1px solid var(--border)}
   .pricing-grid{grid-template-columns:1fr}
   .metrics-grid{grid-template-columns:1fr 1fr}
   .metric::after{display:none}
+  .testi-grid{grid-template-columns:1fr}
+  .testi-divider{display:none}
+  .compare-table th,.compare-table td{padding:12px 14px;font-size:.8rem}
+  .hero-cta-row{flex-direction:column;align-items:flex-start}
+  .proc-layout{grid-template-columns:1fr}
+  .proc-nav{border-right:none;border-bottom:1px solid var(--border);flex-direction:row;flex-wrap:wrap}
+  .proc-tab{flex:1;border-bottom:none;border-right:1px solid var(--border);padding:16px 14px}
+  .proc-tab:last-child{border-right:none}
+  .proc-tab::before{top:0;bottom:auto;left:0;right:0;width:100%;height:2px;transform:scaleX(0);transform-origin:left}
+  .proc-tab.active::before{transform:scaleX(1)}
+  .proc-tab-text{display:none}
+  .proc-num{font-size:1.1rem}
+  .proc-content{min-height:280px}
+  .proc-panel{padding:32px 28px}
 }
 </style>
 </head>
@@ -670,10 +924,7 @@ footer{padding:48px 40px;border-top:1px solid var(--border)}
 <nav class="nav" id="nav">
   <div class="nav-inner">
     <a href="#" class="logo">
-      <svg class="logo-hex" viewBox="0 0 28 28" fill="none">
-        <path d="M14 2L25 8.5V19.5L14 26L3 19.5V8.5L14 2Z" stroke="currentColor" stroke-width="1.5"/>
-        <circle cx="14" cy="14" r="3" fill="currentColor"/>
-      </svg>
+      <img src="cropped-benchtop-logo-01-2-copy-1024x383-1.png" alt="Digital Benchtop logo" class="logo-img">
       Digital<em>Benchtop</em>
     </a>
     <div class="nav-links">
@@ -681,8 +932,9 @@ footer{padding:48px 40px;border-top:1px solid var(--border)}
       <a href="#process">Process</a>
       <a href="#templates">Templates</a>
       <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
     </div>
-    <button class="nav-cta" onclick="focusCta()"><span>Get Started</span></button>
+    <a href="mailto:hello@digitalbenchmark.com?subject=I%27d%20like%20a%20free%20consultation" class="nav-cta"><span>Get Started</span></a>
   </div>
 </nav>
 
@@ -706,15 +958,15 @@ footer{padding:48px 40px;border-top:1px solid var(--border)}
       Professional websites for <span id="typeCycle">principal investigators</span> —
       built by someone who's been in the lab.
     </p>
-    <div class="hero-form">
-      <input type="email" id="heroEmail" class="hero-input" placeholder="your@university.edu" />
-      <button class="hero-btn" onclick="heroSubmit()">
-        <span>Get Started</span>
+    <div class="hero-cta-row">
+      <a href="mailto:hello@digitalbenchmark.com?subject=I%27d%20like%20a%20free%20consultation" class="hero-btn">
+        <span>Book a Free Discovery Call</span>
         <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
           <path d="M3 7.5h9M8 3.5l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
-      </button>
+      </a>
     </div>
+    <p class="hero-no-commitment">No commitment. Replies within 24 hours.</p>
     <div class="hero-proof">
       <div class="proof-avatars">
         <div class="proof-av" style="--h:180"></div>
@@ -786,39 +1038,151 @@ footer{padding:48px 40px;border-top:1px solid var(--border)}
   </div>
 </section>
 
-<!-- PROCESS (Horizontal Scroll) -->
-<section class="process-outer" id="process">
-  <div class="process-sticky" id="pSticky">
-    <div class="process-hdr">
-      <div class="section-label" data-reveal>How It Works</div>
-      <h2 class="section-h2" data-reveal>From conversation<br/><em>to live site.</em></h2>
+<!-- COMPARISON -->
+<section class="compare" id="compare">
+  <div class="compare-inner">
+    <div class="section-label" data-reveal>The Alternative</div>
+    <h2 class="section-h2" data-reveal>Why not just <em>do it yourself?</em></h2>
+    <div data-reveal data-d="1">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>DIY (Squarespace/Wix)</th>
+            <th>Generic Dev Agency</th>
+            <th class="col-us">Digital Benchtop</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Time to launch</td>
+            <td>Weeks of your time</td>
+            <td>3–6 months</td>
+            <td class="col-us"><span class="ck">✓</span> 2–4 weeks</td>
+          </tr>
+          <tr>
+            <td>Understands grant cycles & impact</td>
+            <td><span class="xk">✕</span></td>
+            <td><span class="xk">✕</span></td>
+            <td class="col-us"><span class="ck">✓</span> Built in</td>
+          </tr>
+          <tr>
+            <td>Publication list integration</td>
+            <td><span class="pk">Manual</span></td>
+            <td><span class="pk">Extra cost</span></td>
+            <td class="col-us"><span class="ck">✓</span> Included</td>
+          </tr>
+          <tr>
+            <td>Lab member & alumni pages</td>
+            <td><span class="pk">DIY templates</span></td>
+            <td><span class="pk">Scope creep</span></td>
+            <td class="col-us"><span class="ck">✓</span> Standard</td>
+          </tr>
+          <tr>
+            <td>Cost</td>
+            <td>$16–$46/mo + your time</td>
+            <td>$5,000–$25,000+</td>
+            <td class="col-us"><span class="ck">✓</span> From $1,000</td>
+          </tr>
+          <tr>
+            <td>Ongoing updates</td>
+            <td><span class="pk">You do it</span></td>
+            <td><span class="pk">Expensive retainer</span></td>
+            <td class="col-us"><span class="ck">✓</span> $20/month</td>
+          </tr>
+          <tr>
+            <td>Grant-reviewer ready</td>
+            <td><span class="xk">✕</span></td>
+            <td><span class="xk">✕</span></td>
+            <td class="col-us"><span class="ck">✓</span> Always</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-    <div class="process-track-wrap" id="pWrap">
-      <div class="process-track" id="pTrack">
-        <div class="p-step" id="ps1">
-          <div class="step-n">01</div>
+  </div>
+</section>
+
+<!-- PROCESS — interactive steps -->
+<section class="process" id="process">
+  <div class="process-inner">
+    <div class="proc-hdr" data-reveal>
+      <div class="section-label">How It Works</div>
+      <h2 class="section-h2">From conversation<br/><em>to live site.</em></h2>
+    </div>
+    <div class="proc-layout" data-reveal id="procLayout">
+
+      <!-- step tabs -->
+      <div class="proc-nav">
+        <button class="proc-tab active" data-step="0">
+          <div class="proc-tab-inner">
+            <span class="proc-num">01</span>
+            <div class="proc-tab-text">
+              <span class="proc-step-lbl">Step 01</span>
+              <span class="proc-tab-title">Discovery Call</span>
+            </div>
+          </div>
+          <div class="proc-tab-prog"><div class="proc-tab-prog-fill"></div></div>
+        </button>
+        <button class="proc-tab" data-step="1">
+          <div class="proc-tab-inner">
+            <span class="proc-num">02</span>
+            <div class="proc-tab-text">
+              <span class="proc-step-lbl">Step 02</span>
+              <span class="proc-tab-title">Conceptualization</span>
+            </div>
+          </div>
+          <div class="proc-tab-prog"><div class="proc-tab-prog-fill"></div></div>
+        </button>
+        <button class="proc-tab" data-step="2">
+          <div class="proc-tab-inner">
+            <span class="proc-num">03</span>
+            <div class="proc-tab-text">
+              <span class="proc-step-lbl">Step 03</span>
+              <span class="proc-tab-title">Build & Review</span>
+            </div>
+          </div>
+          <div class="proc-tab-prog"><div class="proc-tab-prog-fill"></div></div>
+        </button>
+        <button class="proc-tab" data-step="3">
+          <div class="proc-tab-inner">
+            <span class="proc-num">04</span>
+            <div class="proc-tab-text">
+              <span class="proc-step-lbl">Step 04</span>
+              <span class="proc-tab-title">Launch & Optimize</span>
+            </div>
+          </div>
+          <div class="proc-tab-prog"><div class="proc-tab-prog-fill"></div></div>
+        </button>
+      </div>
+
+      <!-- step content -->
+      <div class="proc-content">
+        <div class="proc-panel active" data-step="0">
+          <div class="proc-ghost">01</div>
+          <div class="step-tag">Step 01 of 04</div>
           <h3>Discovery Call</h3>
           <p>We learn your research focus, goals, and the story you want online. Usually 30 focused minutes — no sales pitch, just listening.</p>
         </div>
-        <div class="p-step" id="ps2">
-          <div class="step-n">02</div>
+        <div class="proc-panel" data-step="1">
+          <div class="proc-ghost">02</div>
+          <div class="step-tag">Step 02 of 04</div>
           <h3>Conceptualization</h3>
           <p>We design a structure tailored to your lab — research pages, publication lists, team bios, and contact forms built for your workflow.</p>
         </div>
-        <div class="p-step" id="ps3">
-          <div class="step-n">03</div>
+        <div class="proc-panel" data-step="2">
+          <div class="proc-ghost">03</div>
+          <div class="step-tag">Step 03 of 04</div>
           <h3>Build & Review</h3>
           <p>We build using your chosen template and your content. You review and we refine. Most clients need just one or two short feedback rounds.</p>
         </div>
-        <div class="p-step" id="ps4">
-          <div class="step-n">04</div>
+        <div class="proc-panel" data-step="3">
+          <div class="proc-ghost">04</div>
+          <div class="step-tag">Step 04 of 04</div>
           <h3>Launch & Optimize</h3>
           <p>We go live, monitor analytics, and keep improving. Optional ongoing maintenance means your site stays fresh without touching a CMS.</p>
         </div>
       </div>
-    </div>
-    <div class="process-bar-wrap">
-      <div class="process-bar" id="pBar"></div>
+
     </div>
   </div>
 </section>
@@ -974,7 +1338,11 @@ footer{padding:48px 40px;border-top:1px solid var(--border)}
           <li><svg class="chk" viewBox="0 0 15 15" fill="none"><path d="M3 7.5l3 3L12 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>$100 / year hosting after year one</li>
           <li><svg class="chk" viewBox="0 0 15 15" fill="none"><path d="M3 7.5l3 3L12 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>30-day post-launch support</li>
         </ul>
-        <button class="p-btn p-btn-outline" onclick="focusCta()">Get Started</button>
+        <a href="mailto:hello@digitalbenchmark.com?subject=Launch%20Plan%20Inquiry" class="p-btn p-btn-outline">Get Started</a>
+        <p class="p-guarantee">
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M6.5 1.5L8 4.5H11.5L9 6.5L10 10L6.5 8L3 10L4 6.5L1.5 4.5H5L6.5 1.5Z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>
+          30-day satisfaction guarantee
+        </p>
       </div>
       <div class="p-card feat" data-reveal data-d="2">
         <div class="plan-name">Maintain</div>
@@ -990,26 +1358,123 @@ footer{padding:48px 40px;border-top:1px solid var(--border)}
           <li><svg class="chk" viewBox="0 0 15 15" fill="none"><path d="M3 7.5l3 3L12 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Priority support — 24-hour response</li>
           <li><svg class="chk" viewBox="0 0 15 15" fill="none"><path d="M3 7.5l3 3L12 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>New lab members, grants & papers added</li>
         </ul>
-        <button class="p-btn p-btn-solid" onclick="focusCta()">Start Free Consultation</button>
+        <a href="mailto:hello@digitalbenchmark.com?subject=Maintain%20Plan%20Inquiry" class="p-btn p-btn-solid">Start Free Consultation</a>
+        <p class="p-guarantee">
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M6.5 1.5L8 4.5H11.5L9 6.5L10 10L6.5 8L3 10L4 6.5L1.5 4.5H5L6.5 1.5Z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>
+          Cancel anytime · No contracts
+        </p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- TESTIMONIAL -->
+<!-- TESTIMONIALS -->
 <section class="testi">
   <div class="testi-inner">
-    <p class="testi-quote" data-reveal>
-      "I'd been putting off a lab website for three years — I assumed it would mean months of back-and-forth with a developer. Digital Benchtop launched ours in under three weeks. Every grant reviewer has commented on how professional it looks."
-    </p>
-    <div class="testi-author" data-reveal data-d="1">
-      <div class="author-av"></div>
-      <div>
-        <div class="author-name">Dr. Sarah Okonkwo</div>
-        <div class="author-title">Associate Professor of Immunology · R1 University</div>
-        <div class="stars">★★★★★</div>
+    <div class="testi-grid">
+      <div class="testi-item" data-reveal>
+        <p class="testi-quote">
+          "I'd been putting off a lab website for three years. Digital Benchtop launched ours in under three weeks. Every grant reviewer has commented on how professional it looks."
+        </p>
+        <div class="testi-author">
+          <div class="author-av author-av-1"></div>
+          <div>
+            <div class="author-name">Dr. Sarah Okonkwo</div>
+            <div class="author-title">Associate Professor of Immunology · R1 University</div>
+            <div class="stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-divider"></div>
+      <div class="testi-item" data-reveal data-d="2">
+        <p class="testi-quote">
+          "Finally someone who didn't need me to explain what a preprint is. They nailed our lab's identity in the first draft. The $20/month to keep it updated is worth it ten times over."
+        </p>
+        <div class="testi-author">
+          <div class="author-av author-av-2"></div>
+          <div>
+            <div class="author-name">Dr. Marcus Trevino</div>
+            <div class="author-title">Assistant Professor of Computational Neuroscience · Big Ten University</div>
+            <div class="stars">★★★★★</div>
+          </div>
+        </div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="faq-inner">
+    <div class="section-label" data-reveal>Questions & Answers</div>
+    <h2 class="section-h2" data-reveal>Everything you<br/><em>want to know.</em></h2>
+    <ul class="faq-list" data-reveal data-d="1">
+
+      <li class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          How long does the whole process take?
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">Most labs are live in 2–4 weeks from our first call. The timeline depends on how quickly you can share your content (bios, publications, research description). We do all the heavy lifting — we'll even help draft copy if you're starting from scratch.</div></div>
+      </li>
+
+      <li class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          What do I need to provide?
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">A 30-minute discovery call and some basic content: your research description, a list of lab members with short bios, a publications list, and any photos you have. Don't have photos? We'll handle that too. We work around your schedule — we know you're busy.</div></div>
+      </li>
+
+      <li class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Will I own the website?
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">Yes — fully. With the Launch plan, you own the code, the domain, and the hosting account. We hand everything over at launch. The Maintain plan is optional and can be cancelled anytime. We never hold your site hostage.</div></div>
+      </li>
+
+      <li class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          What if I need changes after launch?
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">Launch plan clients get 30 days of post-launch support included. After that, you can make changes yourself (the CMS is easy), or upgrade to Maintain and we'll handle everything — new publications, new lab members, grant announcements, and more.</div></div>
+      </li>
+
+      <li class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Is this right for a single PI, or only larger labs?
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">Both. About half our clients are solo PIs or early-career faculty who need a professional presence fast — especially around grant season and job market cycles. The other half are established labs with 10+ members. We tailor the scope to fit.</div></div>
+      </li>
+
+      <li class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Do you handle domain registration and hosting?
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">Yes. We recommend and help set up hosting and domain registration, and walk you through connecting your domain. If your university has specific hosting requirements (some do), we've worked with those too.</div></div>
+      </li>
+
+      <li class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          How is this different from Squarespace or hiring a freelancer?
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">Squarespace gives you a blank canvas and your Saturday afternoons. A freelancer gives you someone who will need the entire grant cycle explained to them. We give you a finished lab website in weeks, built by people who have lived academic research — publications, personnel pages, research focus areas, the works. We know what grant reviewers look for because we've been grant reviewers.</div></div>
+      </li>
+
+      <li class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Is there a guarantee?
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">Yes. If you're not happy with the final site within 30 days of launch, we'll either fix it until you are or refund your setup fee — no questions asked. We're proud of our 98% satisfaction rate and we want to keep it that way.</div></div>
+      </li>
+
+    </ul>
   </div>
 </section>
 
@@ -1018,17 +1483,15 @@ footer{padding:48px 40px;border-top:1px solid var(--border)}
   <div class="cta-inner">
     <div class="section-label" data-reveal>Ready to Launch?</div>
     <h2 class="section-h2" data-reveal>Your research<br/><em>deserves a stage.</em></h2>
-    <p class="cta-sub" data-reveal>Drop your email and we'll be in touch within 24 hours to schedule a free, no-pitch discovery call.</p>
-    <div id="ctaWrap" data-reveal>
-      <div class="cta-form">
-        <input type="email" id="ctaEmail" class="cta-input" placeholder="your@university.edu" />
-        <button class="cta-btn" onclick="ctaSubmit()">Get Started</button>
-      </div>
+    <p class="cta-sub" data-reveal>Email us and we'll be back within 24 hours to schedule a free, no-pitch discovery call. No commitment required.</p>
+    <div data-reveal data-d="1">
+      <a href="mailto:hello@digitalbenchmark.com?subject=Free%20Discovery%20Call%20Request&body=Hi%2C%20I%27d%20love%20to%20discuss%20a%20website%20for%20my%20lab." class="cta-mailto">
+        <svg width="17" height="17" viewBox="0 0 17 17" fill="none"><rect x="2" y="4" width="13" height="10" rx="1.5" stroke="currentColor" stroke-width="1.3"/><path d="M2 6l6.5 4.5L15 6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>hello@digitalbenchmark.com</span>
+        <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2.5 6.5h8M7 2.5l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
     </div>
-    <div class="cta-ok" id="ctaOk">
-      <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="8" stroke="currentColor" stroke-width="1.4"/><path d="M5.5 9l2.5 2.5L12.5 6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      Got it — we'll be in touch within 24 hours.
-    </div>
+    <p class="cta-fine" data-reveal>Or just email us directly at <a href="mailto:hello@digitalbenchmark.com">hello@digitalbenchmark.com</a> — no form, no funnel.</p>
   </div>
 </section>
 
@@ -1037,10 +1500,11 @@ footer{padding:48px 40px;border-top:1px solid var(--border)}
   <div class="foot-inner">
     <div class="foot-logo">Digital<em>Benchtop</em></div>
     <div class="foot-links">
-      <a href="#">About</a>
-      <a href="#">Templates</a>
-      <a href="#">Pricing</a>
-      <a href="#">Contact</a>
+      <a href="#about">About</a>
+      <a href="#templates">Templates</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+      <a href="mailto:hello@digitalbenchmark.com">Contact</a>
     </div>
     <div class="foot-copy">© 2025 Digital Benchtop. All rights reserved.</div>
   </div>
@@ -1066,7 +1530,7 @@ document.addEventListener('mousemove', e => {
   requestAnimationFrame(animRing);
 })();
 
-document.querySelectorAll('a,button,input,[data-tilt],.t-card,.p-card,.why-card').forEach(el => {
+document.querySelectorAll('a,button,[data-tilt],.t-card,.p-card,.why-card,.faq-q,.proc-tab').forEach(el => {
   el.addEventListener('mouseenter', () => document.body.classList.add('c-hover'));
   el.addEventListener('mouseleave', () => document.body.classList.remove('c-hover'));
 });
@@ -1128,40 +1592,55 @@ setInterval(() => {
   }, 300);
 }, 2800);
 
-// ── HORIZONTAL SCROLL PROCESS ───────────────────────────
-const procOuter = document.getElementById('process');
-const pTrack    = document.getElementById('pTrack');
-const pWrap     = document.getElementById('pWrap');
-const pBar      = document.getElementById('pBar');
-const pSteps    = document.querySelectorAll('.p-step');
+// ── PROCESS — interactive steps ─────────────────────────
+(function() {
+  const tabs   = document.querySelectorAll('.proc-tab');
+  const panels = document.querySelectorAll('.proc-panel');
+  const fills  = document.querySelectorAll('.proc-tab-prog-fill');
+  const layout = document.getElementById('procLayout');
+  const STEP_MS = 5000;
+  let cur = 0, t0 = performance.now(), paused = false, pauseW = 0;
 
-let pOuterTop = 0;
-function initProc() {
-  pOuterTop = procOuter.getBoundingClientRect().top + window.scrollY;
-}
-window.addEventListener('load', initProc);
-window.addEventListener('resize', initProc);
-initProc();
+  function goTo(i) {
+    panels[cur].classList.remove('active');
+    panels[cur].classList.add('exit');
+    tabs[cur].classList.remove('active');
+    fills[cur].style.width = '0%';
+    const old = cur;
+    setTimeout(() => panels[old].classList.remove('exit'), 500);
+    cur = i;
+    tabs[cur].classList.add('active');
+    panels[cur].classList.add('active');
+    t0 = performance.now();
+  }
 
-function updateProc() {
-  const oy     = window.scrollY - pOuterTop;
-  const maxOy  = procOuter.offsetHeight - innerHeight;
-  if (oy < 0 || oy > maxOy) return;
+  tabs.forEach((tab, i) => tab.addEventListener('click', () => goTo(i)));
 
-  const prog     = oy / maxOy;
-  const scrollable = pTrack.scrollWidth - pWrap.clientWidth;
-  pTrack.style.transform = `translateX(-${prog * scrollable}px)`;
-  pBar.style.width = (prog * 100) + '%';
+  if (layout) {
+    layout.addEventListener('mouseenter', () => {
+      paused = true;
+      pauseW = parseFloat(fills[cur].style.width) || 0;
+    });
+    layout.addEventListener('mouseleave', () => {
+      paused = false;
+      t0 = performance.now() - (pauseW / 100) * STEP_MS;
+    });
+  }
 
-  const si = Math.min(Math.floor(prog * 4), 3);
-  pSteps.forEach((s, i) => s.classList.toggle('active', i === si));
-}
+  (function tick(now) {
+    if (!paused) {
+      const p = Math.min((now - t0) / STEP_MS, 1);
+      fills[cur].style.width = (p * 100) + '%';
+      if (p >= 1) goTo((cur + 1) % tabs.length);
+    }
+    requestAnimationFrame(tick);
+  })(performance.now());
+})();
 
 // ── MAIN SCROLL HANDLER ─────────────────────────────────
 window.addEventListener('scroll', () => {
   updateProg();
   updateNav();
-  updateProc();
 }, { passive: true });
 
 // ── 3D CARD TILT ────────────────────────────────────────
@@ -1180,7 +1659,7 @@ document.querySelectorAll('[data-tilt]').forEach(card => {
 });
 
 // ── MAGNETIC BUTTONS ────────────────────────────────────
-document.querySelectorAll('.hero-btn, .nav-cta, .cta-btn').forEach(btn => {
+document.querySelectorAll('.hero-btn, .nav-cta, .cta-mailto').forEach(btn => {
   btn.addEventListener('mousemove', e => {
     const r = btn.getBoundingClientRect();
     const x = (e.clientX - r.left - r.width  / 2) * 0.28;
@@ -1218,33 +1697,25 @@ function toggleBilling() {
   }, 210);
 }
 
-// ── FORM ACTIONS ────────────────────────────────────────
-function focusCta() {
-  document.getElementById('ctaEmail').scrollIntoView({ behavior: 'smooth', block: 'center' });
-  setTimeout(() => document.getElementById('ctaEmail').focus(), 600);
-}
+// ── FAQ ACCORDION ───────────────────────────────────────
+function toggleFaq(btn) {
+  const item = btn.closest('.faq-item');
+  const answer = item.querySelector('.faq-a');
+  const isOpen = item.classList.contains('open');
 
-function heroSubmit() {
-  const v = document.getElementById('heroEmail').value;
-  if (v) document.getElementById('ctaEmail').value = v;
-  focusCta();
-}
+  // close all
+  document.querySelectorAll('.faq-item.open').forEach(i => {
+    i.classList.remove('open');
+    i.querySelector('.faq-a').style.maxHeight = '0';
+  });
 
-function ctaSubmit() {
-  const el = document.getElementById('ctaEmail');
-  if (!el.value || !el.value.includes('@')) {
-    el.style.borderColor = 'rgba(255,80,80,.55)';
-    el.style.boxShadow   = '0 0 0 3px rgba(255,80,80,.1)';
-    el.animate([{transform:'translateX(-4px)'},{transform:'translateX(4px)'},{transform:'translateX(-3px)'},{transform:'translateX(3px)'},{transform:'translateX(0)'}], {duration:320});
-    setTimeout(() => { el.style.borderColor=''; el.style.boxShadow=''; }, 2200);
-    return;
+  if (!isOpen) {
+    item.classList.add('open');
+    answer.style.maxHeight = answer.scrollHeight + 'px';
   }
-  document.getElementById('ctaWrap').style.display = 'none';
-  document.getElementById('ctaOk').classList.add('show');
 }
 
 // ── INIT ─────────────────────────────────────────────────
-pSteps[0].classList.add('active');
 updateProg();
 updateNav();
 </script>
